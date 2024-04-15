@@ -4,6 +4,81 @@
   
   
   <entry>
+    <title>博客报告</title>
+    <link href="/2024/04/22/%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/"/>
+    <url>/2024/04/22/%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/</url>
+    
+    <content type="html"><![CDATA[<h2 id="博客网站搭建指南报告"><a href="#博客网站搭建指南报告" class="headerlink" title="博客网站搭建指南报告"></a>博客网站搭建指南报告</h2><h4 id="选择博客模版"><a href="#选择博客模版" class="headerlink" title="选择博客模版"></a>选择博客模版</h4><p>本文选择的模版为：Hexo[<a href="https://hexo.io/zh-cn/]">https://hexo.io/zh-cn/]</a></p><h4 id="环境要求"><a href="#环境要求" class="headerlink" title="环境要求"></a>环境要求</h4><ol><li>Git</li><li>Node.js</li></ol><h4 id="下载Hexo"><a href="#下载Hexo" class="headerlink" title="下载Hexo"></a>下载Hexo</h4><p>在自己想要安装的目录下，通过cmd用npm安装hexo并初始化本地博客文件夹</p><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">npm install hexo-cli -g<br>hexo init ***<span class="hljs-string">.github.io</span>  <span class="hljs-comment"># 这里替换成你自己的，为后续更新到github上，使用github名字.github,io</span><br><span class="hljs-keyword">cd</span> ***<span class="hljs-string">.github.io</span>  <span class="hljs-comment"># 进入本地的博客文件夹</span><br>npm install<br>hexo server <span class="hljs-comment"># 打开本地服务器预览</span><br></code></pre></td></tr></table></figure><p>之后通过浏览器查看<a href="https://link.zhihu.com/?spm=a2c6h.12873639.article-detail.9.37aa2846P2lC0y&target=http://localhost:4000/">http://localhost:4000/</a>是否成功</p><h4 id="选择博客主题"><a href="#选择博客主题" class="headerlink" title="选择博客主题"></a>选择博客主题</h4><p><a href="https://hexo.io/themes/">hexo主题官网</a></p><p>本文选择的主题为Fluid，安装Fluid进入自己的博客目录执行一下命令</p><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">npm install <span class="hljs-comment">--save hexo-theme-fluid</span><br></code></pre></td></tr></table></figure><p>之前创建的博客目录下创建 _config.fluid.yml，将该<strong>主题下</strong>的 _config.yml 内容复制进去。<strong>注意这里得复制Fluid在GIthub中的 _config.yml ，而不是我们博客下的 _config.yml 文件！！！</strong></p><h4 id="配置Fluid"><a href="#配置Fluid" class="headerlink" title="配置Fluid"></a>配置Fluid</h4><p>修改博客目录中的 _config.yml，修改两个字段：</p><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-symbol">language:</span> <span class="hljs-built_in">zh</span>-CN  <span class="hljs-meta"># 指定中文</span><br><span class="hljs-symbol">theme:</span> fluid  <span class="hljs-meta"># 指定主题</span><br></code></pre></td></tr></table></figure><p><a href="https://fluid-dev.github.io/hexo-fluid-docs/">其他配置参考官网：Fluid用户手册</a></p><h4 id="更新部署博客页面指令"><a href="#更新部署博客页面指令" class="headerlink" title="更新部署博客页面指令"></a>更新部署博客页面指令</h4><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs crystal"><span class="hljs-variable">$ </span>hexo clean  <span class="hljs-comment"># 清空一下缓存，有时候博客页面显示不正常也可以试试这个命令行</span><br><span class="hljs-variable">$ </span>hexo g  <span class="hljs-comment"># hexo generate的简写，把刚刚做的改动生成更新一下</span><br><span class="hljs-variable">$ </span>hexo server  <span class="hljs-comment"># 在本地服务器看看博客有没有更新成NexT主题：https://localhost:4000</span><br></code></pre></td></tr></table></figure><h4 id="部署到GitHub"><a href="#部署到GitHub" class="headerlink" title="部署到GitHub"></a>部署到GitHub</h4><p>修改博客根目录下的_config.yml文件中的deploy</p><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">deploy:</span><br><span class="hljs-symbol">  type:</span> git<br><span class="hljs-symbol">  repo:</span> git@github.com:qzkq/qzkq.github.io.git  <span class="hljs-meta"># 这里我用的是ssh，也可以用https，可能会报错，设置token即可</span><br><span class="hljs-symbol">  branch:</span> main  <span class="hljs-meta"># 注意自己创建的分支，我的是main，有可能是master</span><br></code></pre></td></tr></table></figure><p>安装hexo-deployer-git自动部署发布工具，将hexo 部署到 git page 的 deployer</p><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs applescript">npm install hexo-deployer-git <span class="hljs-comment">--save</span><br>hexo d  <span class="hljs-comment"># hexo deploy，如果本地服务器没问题就可以上传到github上</span><br></code></pre></td></tr></table></figure><p>更新博客之后，可以通过如下命令就行上传github</p><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs crystal"><span class="hljs-variable">$ </span>hexo g      <span class="hljs-comment"># 是hexo generate的简写，把刚刚做的改动生成更新一下</span><br><span class="hljs-variable">$ </span>hexo server <span class="hljs-comment"># 在本地服务器看看博客有没有更新成NexT主题：https://localhost:4000</span><br><span class="hljs-variable">$ </span>hexo d      <span class="hljs-comment"># hexo deploy，如果本地服务器看了没问题就可以上传到github网站</span><br></code></pre></td></tr></table></figure><h4 id="写博客"><a href="#写博客" class="headerlink" title="写博客"></a>写博客</h4><p>通过一下命令，创建新的博客</p><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gauss">$ hexo <span class="hljs-keyword">new</span> [layout] &lt;<span class="hljs-built_in">title</span>&gt;<br></code></pre></td></tr></table></figure><p><a href="https://hexo.io/zh-cn/docs/writing">详细配置</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>HomeWork</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Study</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Mac install pytorch</title>
+    <link href="/2024/04/15/Mac-install-pytorch/"/>
+    <url>/2024/04/15/Mac-install-pytorch/</url>
+    
+    <content type="html"><![CDATA[<h3 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h3><p><a href="https://www.anaconda.com/#">Anaconda</a>：可以创建一个个不同的环境把这些包分开，比如需要一个tensorflow的环境，那就创建一个环境在这个环境内下载安装tensorflow，然后另一个环境装pytorch。</p><h3 id="Pytorch安装"><a href="#Pytorch安装" class="headerlink" title="Pytorch安装"></a>Pytorch安装</h3><h4 id="创建新的虚拟环境"><a href="#创建新的虚拟环境" class="headerlink" title="创建新的虚拟环境"></a>创建新的虚拟环境</h4><p>不同的项目可能需要的软件及包环境版本不同，所以需要配置不同的虚拟环境。</p><p>创建虚拟环境：</p><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs excel">conda create -<span class="hljs-built_in">n</span> 环境名<br></code></pre></td></tr></table></figure><p>退出当前环境：</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">conda deactivate</span><br></code></pre></td></tr></table></figure><h4 id="进入环境安装所需软件和包"><a href="#进入环境安装所需软件和包" class="headerlink" title="进入环境安装所需软件和包"></a>进入环境安装所需软件和包</h4><ol><li><p>进入环境</p><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">conda <span class="hljs-built_in">activate</span> 环境名<br></code></pre></td></tr></table></figure></li><li><p>查看环境中的包</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">conda list</span><br></code></pre></td></tr></table></figure></li><li><p>用Conda安装所需包：如安装python</p><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">conda install python<span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-number">3.8</span><br></code></pre></td></tr></table></figure></li><li><p>进入pytorch官网，选择自己系统对应的pytorch<a href="https://pytorch.org/get-started/locally/">Pytorch官网地址</a></p></li><li><p>删除命令</p><p>删除环境：</p><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">conda <span class="hljs-keyword">remove</span> -n env_name --all <span class="hljs-comment"># env_name用要删除的虚拟环境的名字替换即可</span><br></code></pre></td></tr></table></figure><p>删除环境中的包</p><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">conda <span class="hljs-keyword">remove</span> package_name <span class="hljs-comment"># package_name用要删除的包的名字替换</span><br></code></pre></td></tr></table></figure></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>工具命令</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Study</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Typora使用基础命令</title>
+    <link href="/2024/04/13/Typora%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
+    <url>/2024/04/13/Typora%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
+    
+    <content type="html"><![CDATA[<h1 id="使用教程"><a href="#使用教程" class="headerlink" title="使用教程"></a>使用教程</h1><ul><li><p>标题级数：cmd + 1—6</p></li><li><p>正文：cmd + 0</p></li><li><p>斜体：cmd + I</p></li><li><p>粗体：cmd + B</p></li><li><p>有&#x2F;无序列表：Option + Cmd + U&#x2F;O</p><ol><li>想要子列表： 按 Tab</li><li>回到上一层：shift+Tab</li></ol></li><li><p>任务列表：Option + Cmd + X</p></li><li><p>分割线：— + Enter</p></li><li><p>超链接：Cmd + K</p></li><li><p>代码块：Option + Cmd + C</p></li><li><p>公式块：Option + Cmd + B</p></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>工具命令</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Study</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Hello World</title>
     <link href="/2024/04/12/hello-world/"/>
     <url>/2024/04/12/hello-world/</url>
